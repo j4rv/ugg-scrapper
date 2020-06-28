@@ -25,6 +25,14 @@ ugg-scrapper -champ annie -role support
 
 ![Annie support winrates](images/annie-support.png)
 
+Volibear at patch 10.12 (default role: jungle):
+
+```
+ugg-scrapper -champ volibear -patch 10_12
+```
+
+![Volibear winrates at patch 10.12](images/volibear-default-10_12.png)
+
 ## Libraries credits
 - [github.com/gocolly/colly](https://github.com/gocolly/colly)
 - [github.com/wcharczuk/go-chart.](https://github.com/wcharczuk/go-chart)
