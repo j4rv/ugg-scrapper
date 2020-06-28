@@ -7,9 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gocolly/colly"
+	"github.com/gocolly/colly/v2"
 )
 
+// Config stores info about what we are interested in when calling a function (champ, role, patch...)
 type Config struct {
 	Champ string
 	Role  string
@@ -62,9 +63,8 @@ func GetWRsByRank(cfg Config) map[string]float64 {
 // GetWR makes a request to u.gg and returns the winrate of the config and rank passed
 func GetWR(cfg Config, rank string) float64 {
 	var wr float64
-	c := colly.NewCollector(
-		colly.AllowedDomains("u.gg"),
-	)
+
+	c := colly.NewCollector(colly.AllowedDomains("u.gg"))
 
 	c.OnHTML("div .win-rate > .value", func(e *colly.HTMLElement) {
 		var err error
@@ -81,9 +81,8 @@ func GetWR(cfg Config, rank string) float64 {
 	url := fmt.Sprintf("https://u.gg/lol/champions/%s/build?rank=%s&role=%s&patch=%s",
 		cfg.Champ, rank, cfg.Role, cfg.Patch)
 	c.Visit(url)
-	time.Sleep(sleepTimeBetweenRequests)
-
 	log.Println(rank, wr, url)
+	time.Sleep(sleepTimeBetweenRequests)
 
 	return wr
 }
