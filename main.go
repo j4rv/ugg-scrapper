@@ -71,8 +71,6 @@ func renderGraph(data []chart.Value) {
 		Title:        champ + " winrates by rank, role: " + role,
 		Height:       512,
 		BarWidth:     60,
-		UseBaseValue: true,
-		BaseValue:    50,
 		Bars:         data,
 		Background: chart.Style{
 			Padding: chart.Box{
