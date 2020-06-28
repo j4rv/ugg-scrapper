@@ -5,7 +5,7 @@ u.gg scrapper to make winrate graphs
 Requires go installed
 
 ```
-go install github.com/j4rv/ugg-scrapper
+go install github.com/j4rv/ugg-scrapper/bin/ugg-scrapper
 ```
 
 ## How to use
