@@ -17,6 +17,27 @@ type Config struct {
 	Patch string
 }
 
+// QueryParamChamp returns the config's Champ property with the valid's u.gg format (lowercase and no spaces)
+//   This allows the users to pass "Aurelion Sol" in the config instead of "aurelionsol"
+func (c Config) QueryParamChamp() string {
+	res := c.Champ
+	res = strings.ReplaceAll(res, " ", "")
+	res = strings.ToLower(res)
+	return res
+}
+
+// QueryParamRole returns the config's Role property with the valid's u.gg format (lowercase and no spaces)
+//   This allows the users to pass "Top" in the config instead of "top"
+func (c Config) QueryParamRole() string {
+	return strings.ToLower(c.Role)
+}
+
+// QueryParamPatch returns the config's Patch property with the valid's u.gg format (with underscores)
+//   This allows the users to pass "10.12" in the config instead of "10_12"
+func (c Config) QueryParamPatch() string {
+	return strings.Replace(c.Patch, ".", "_", 1)
+}
+
 // U.GG rank query strings
 const (
 	Iron        = "iron"
@@ -79,7 +100,7 @@ func GetWR(cfg Config, rank string) float64 {
 	})
 
 	url := fmt.Sprintf("https://u.gg/lol/champions/%s/build?rank=%s&role=%s&patch=%s",
-		cfg.Champ, rank, cfg.Role, cfg.Patch)
+		cfg.QueryParamChamp(), rank, cfg.QueryParamRole(), cfg.QueryParamPatch())
 	c.Visit(url)
 	log.Println(rank, wr, url)
 	time.Sleep(sleepTimeBetweenRequests)

@@ -21,9 +21,9 @@ func main() {
 
 func configFromFlags() uggscrapper.Config {
 	var cfg uggscrapper.Config
-	flag.StringVar(&cfg.Champ, "champ", "aatrox", "The champ to get the winrates graph for. Example: aurelionsol, aatrox, zoe")
+	flag.StringVar(&cfg.Champ, "champ", "aatrox", "The champ to get the winrates graph for. Examples: \"Aurelion Sol\", aatrox, Zoe")
 	flag.StringVar(&cfg.Role, "role", "default", "The role for the champ, empty if you want their most used role. Valid values: top, jungle, middle, bot, support")
-	flag.StringVar(&cfg.Patch, "patch", "latest", "The LoL patch to get the winrates from. Example: 10_11, 10_9")
+	flag.StringVar(&cfg.Patch, "patch", "latest", "The LoL patch to get the winrates from. Examples: 10_11, 10_9")
 	flag.Parse()
 
 	log.Println("Champ:", cfg.Champ)
