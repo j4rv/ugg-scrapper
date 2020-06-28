@@ -26,5 +26,5 @@ ugg-scrapper -champ annie -role support
 ![Annie support winrates](images/annie-support.png)
 
 ## Libraries credits
-- github.com/gocolly/colly
-- github.com/wcharczuk/go-chart.
+- [github.com/gocolly/colly](https://github.com/gocolly/colly)
+- [github.com/wcharczuk/go-chart.](https://github.com/wcharczuk/go-chart)
